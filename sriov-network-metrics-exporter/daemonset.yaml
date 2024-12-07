@@ -73,7 +73,7 @@ spec:
           type: "Socket"
         name: kubeletsocket
       - hostPath:
-          path: /sys/fs/cgroup/cpuset/kubepods.slice/
+          path: /sys/fs/cgroup/cpuset/kubepods/ #path for cgroupv1 instead of one for cgroupv2 /sys/fs/cgroup/cpuset/kubepods.slice/
           type: "Directory"
         name: kubecgroup
       - hostPath:
