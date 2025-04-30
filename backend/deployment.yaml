@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      serviceAccountName: backend-sa
+      restartPolicy: Always
+      initContainers:
+        - name: git-cloner
+          image: alpine/git
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - git clone https://github.com/amrbaraka/test.git /repo
+          volumeMounts:
+            - name: git-repo
+              mountPath: /repo
+      containers:
+        - name: deployer
+          image: bitnami/kubectl:latest
+          command: ["/bin/sh", "-c", "sleep infinity"]
+          volumeMounts:
+            - name: git-repo
+              mountPath: /repo
+            - name: config-volume
+              mountPath: /configs
+      volumes:
+        - name: git-repo
+          emptyDir: {}
+        - name: config-volume
+          configMap:
+            name: app-variables
