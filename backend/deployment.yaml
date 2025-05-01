@@ -21,17 +21,17 @@ spec:
             - /bin/sh
             - -c
           args:
-            - git clone https://github.com/amrbaraka/test.git /repo
+            - git clone https://github.com/amrbaraka/test.git /test
           volumeMounts:
             - name: git-repo
-              mountPath: /repo
+              mountPath: /test
       containers:
         - name: deployer
           image: bitnami/kubectl:latest
           command: ["/bin/sh", "-c", "sleep infinity"]
           volumeMounts:
             - name: git-repo
-              mountPath: /repo
+              mountPath: /test
             - name: config-volume
               mountPath: /configs
       volumes:
