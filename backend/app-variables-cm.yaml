@@ -2,6 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app-variables-cm
+  annotations:
+    argocd.argoproj.io/sync-options: Skip
 data:
   vars.env: |
     REPLICAS=1
