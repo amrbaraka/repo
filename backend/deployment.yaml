@@ -39,4 +39,4 @@ spec:
           emptyDir: {}
         - name: config-volume
           configMap:
-            name: app-variables
+            name: app-variables-cm
