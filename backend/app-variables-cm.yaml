@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: app-variables-cm
   annotations:
-    argocd.argoproj.io/sync-options: Skip
+    argocd.argoproj.io/sync-options: Skip=true
 data:
   vars.env: |
     REPLICAS=1
