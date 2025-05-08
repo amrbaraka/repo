@@ -4,5 +4,5 @@ metadata:
   name: app-variables-cm
 data:
   vars.env: |
-    REPLICAS=1
-    IMAGE=nginx:latest
+    mcc=208
+    mnc=93
