@@ -31,7 +31,7 @@ spec:
             - name: GIT_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: git-creds-secret
+                  name: git-repo-secret
                   key: username
             - name: GIT_PASSWORD
               valueFrom:
