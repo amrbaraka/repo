@@ -21,7 +21,7 @@ spec:
             - /bin/sh
             - -c
           #args:
-          #  - git clone https://github.com/amrbaraka/priv.git /test
+          #  - git clone -b ui https://github.com/amrbaraka/priv.git /test
           args:
            - |
              git config --global credential.helper store && \
