@@ -31,17 +31,17 @@ spec:
             - name: GIT_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: git-repo-secret
+                  name: git-repo-secret-def-ns
                   key: username
             - name: GIT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: git-repo-secret
+                  name: git-repo-secret-def-ns
                   key: password
             - name: GIT_URL
               valueFrom:
                 secretKeyRef:
-                  name: git-repo-secret
+                  name: git-repo-secret-def-ns
                   key: url
           volumeMounts:
             - name: git-repo
