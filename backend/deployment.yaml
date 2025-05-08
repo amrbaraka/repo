@@ -20,8 +20,29 @@ spec:
           command:
             - /bin/sh
             - -c
+          #args:
+          #  - git clone https://github.com/amrbaraka/priv.git /test
           args:
-            - git clone https://github.com/amrbaraka/priv.git /test
+           - |
+             git config --global credential.helper store && \
+             echo "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com" > ~/.git-credentials && \
+             git clone ${GIT_URL} /test
+          env:
+            - name: GIT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: git-creds-secret
+                  key: username
+            - name: GIT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: git-creds-secret
+                  key: password
+            - name: GIT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: git-creds-secret
+                  key: url
           volumeMounts:
             - name: git-repo
               mountPath: /test
