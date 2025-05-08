@@ -21,7 +21,7 @@ spec:
             - /bin/sh
             - -c
           args:
-            - git clone https://github.com/amrbaraka/test.git /test
+            - git clone https://github.com/amrbaraka/priv.git /test
           volumeMounts:
             - name: git-repo
               mountPath: /test
