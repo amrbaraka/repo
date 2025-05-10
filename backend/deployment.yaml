@@ -55,9 +55,14 @@ spec:
               mountPath: /test
             - name: config-volume
               mountPath: /configs
+              - name: config-volume-2
+              mountPath: /configs-2  
       volumes:
         - name: git-repo
           emptyDir: {}
         - name: config-volume
           configMap:
             name: app-variables-cm
+        - name: config-volume-2
+          configMap:
+            name: subs-prov-cm
