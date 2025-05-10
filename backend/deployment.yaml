@@ -55,7 +55,7 @@ spec:
               mountPath: /test
             - name: config-volume
               mountPath: /configs
-              - name: config-volume-2
+            - name: config-volume-2
               mountPath: /configs-2  
       volumes:
         - name: git-repo
