@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: subs-prov-cm
+data:
+  vars.env: |
+    count=2
+    start_msin=0000000001
