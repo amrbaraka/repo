@@ -53,6 +53,8 @@ spec:
           volumeMounts:
             - name: git-repo
               mountPath: /test
+            - name: shared
+              mountPath: /shared  
             - name: config-volume
               mountPath: /configs
             - name: config-volume-2
@@ -63,10 +65,12 @@ spec:
           args:
             - sleep infinity
           volumeMounts:
-            - name: git-repo
-              mountPath: /test
+            - name: shared
+              mountPath: /shared
       volumes:
         - name: git-repo
+          emptyDir: {}
+        - name: shared
           emptyDir: {}
         - name: config-volume
           configMap:
