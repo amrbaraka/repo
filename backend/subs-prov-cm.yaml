@@ -5,4 +5,3 @@ metadata:
 data:
   vars.env: |
     count=2
-    start_msin=0000000001
