@@ -45,14 +45,14 @@ spec:
                   key: url
           volumeMounts:
             - name: git-repo
-              mountPath: /test
+              mountPath: /git-repo
       containers:
         - name: deployer
           image: bitnami/kubectl:latest
           command: ["/bin/sh", "-c", "sleep infinity"]
           volumeMounts:
             - name: git-repo
-              mountPath: /test
+              mountPath: /git-repo
             - name: config-volume
               mountPath: /configs
             - name: config-volume-2
