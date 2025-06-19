@@ -19,3 +19,5 @@ spec:
         image: curlimages/curl
         command: ["/bin/sh"]
         args: ["-c", "sleep infinity"]
+        securityContext:
+          runAsUser: 0        
