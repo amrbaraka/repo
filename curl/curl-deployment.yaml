@@ -14,10 +14,11 @@ spec:
       labels:
         app: curl
     spec:
+      securityContext:
+        runAsUser: 0         
       containers:
       - name: curl
         image: curlimages/curl
         command: ["/bin/sh"]
         args: ["-c", "sleep infinity"]
-        securityContext:
-          runAsUser: 0        
+   
