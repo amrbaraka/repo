@@ -4,4 +4,4 @@ metadata:
   name: subs-prov-variables-cm
 data:
   vars.env: |
-    count=1
+    count=2
