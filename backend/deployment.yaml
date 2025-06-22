@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
+  labels:
+    app: backend
 spec:
   replicas: 1
   selector:
@@ -13,56 +15,11 @@ spec:
         app: backend
     spec:
       serviceAccountName: backend-sa
-      restartPolicy: Always
-      initContainers:
-        - name: git-cloner
-          image: alpine/git
-          command:
-            - /bin/sh
-            - -c
-          #args:
-          #  - git clone -b ui https://github.com/amrbaraka/priv.git /test
-          args:
-           - |
-             git config --global credential.helper store && \
-             echo "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com" > ~/.git-credentials && \
-             git clone ${GIT_URL} /git-repo
-          env:
-            - name: GIT_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: git-repo-secret-def-ns
-                  key: username
-            - name: GIT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: git-repo-secret-def-ns
-                  key: password
-            - name: GIT_URL
-              valueFrom:
-                secretKeyRef:
-                  name: git-repo-secret-def-ns
-                  key: url
-          volumeMounts:
-            - name: git-repo
-              mountPath: /git-repo
       containers:
-        - name: deployer
-          image: bitnami/kubectl:latest
-          command: ["/bin/sh", "-c", "sleep infinity"]
-          volumeMounts:
-            - name: git-repo
-              mountPath: /git-repo
-            - name: config-volume
-              mountPath: /configs
-            - name: config-volume-2
-              mountPath: /configs-2  
-      volumes:
-        - name: git-repo
-          emptyDir: {}
-        - name: config-volume
-          configMap:
-            name: app-variables-cm
-        - name: config-volume-2
-          configMap:
-            name: subs-prov-cm
+        - name: backend
+          image: public.ecr.aws/g8c8r6q0/5g-deployer-backend:0.1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"
