@@ -44,7 +44,7 @@ spec:
                   name: git-repo-secret-def-ns
                   key: url
           volumeMounts:
-            - name: git-repo
+            - name: git-repo-volume
               mountPath: /git-repo
       containers:
         - name: deployer
