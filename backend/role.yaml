@@ -5,5 +5,11 @@ metadata:
   namespace: default
 rules:
   - apiGroups: [""]
-    resources: ["configmaps", "pods"]
-    verbs: ["get", "list", "patch", "watch", "exec"]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "patch", "watch"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["create"]
