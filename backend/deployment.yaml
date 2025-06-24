@@ -17,7 +17,7 @@ spec:
       serviceAccountName: backend-sa
       containers:
         - name: backend
-          image: public.ecr.aws/g8c8r6q0/5g-deployer-backend:0.30
+          image: public.ecr.aws/g8c8r6q0/5g-deployer-backend:0.7
           ports:
             - containerPort: 8000
           env:
