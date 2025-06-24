@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: public.ecr.aws/g8c8r6q0/5g-deployer-ui:0.7
+          image: public.ecr.aws/g8c8r6q0/5g-deployer-ui:0.8
           ports:
             - containerPort: 8080
