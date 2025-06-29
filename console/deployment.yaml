@@ -17,6 +17,6 @@ spec:
       serviceAccountName: console-sa
       containers:
         - name: frontend
-          image: public.ecr.aws/g8c8r6q0/frontend:0.50
+          image: public.ecr.aws/g8c8r6q0/frontend:0.51
           ports:
             - containerPort: 8080
