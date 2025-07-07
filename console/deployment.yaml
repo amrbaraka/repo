@@ -20,3 +20,9 @@ spec:
           image: public.ecr.aws/g8c8r6q0/frontend:0.53
           ports:
             - containerPort: 8080
+          env:
+          - name: DOMAIN_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: domain-name-cm
+                key: DOMAIN_NAME
