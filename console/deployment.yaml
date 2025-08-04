@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: console
   labels:
-    app: frontend
+    app: console
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: console
   template:
     metadata:
       labels:
-        app: frontend
+        app: console
     spec:
       serviceAccountName: console-sa
       containers:
-        - name: frontend
+        - name: console
           image: public.ecr.aws/g8c8r6q0/frontend:0.62
           ports:
             - containerPort: 8080
